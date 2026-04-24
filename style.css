@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --dark-blue: #1e51a2;
+}
+
+body {
+    background-color: var(--dark-blue);
+}
+
