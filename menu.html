@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Montar Pedido - Domino's Pizza</title>
+    <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+    <div class="menu-container">
+    
+        <header class="header">
+            <h1>Montar Pedido</h1>
+            <button class="logout-btn" onclick="logout()">Sair</button>
+        </header>
+
+   
+        <div class="progress-container">
+            <div class="progress-step active" data-step="1">
+                <div class="step-number">1</div>
+                <span>Tamanho</span>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step" data-step="2">
+                <div class="step-number">2</div>
+                <span>Massa</span>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step" data-step="3">
+                <div class="step-number">3</div>
+                <span>Sabor</span>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step" data-step="4">
+                <div class="step-number">4</div>
+                <span>Extras</span>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step" data-step="5">
+                <div class="step-number">5</div>
+                <span>Bebidas</span>
+            </div>
+        </div>
+
+        <div class="content-wrapper">
+            
+            <div class="main-content">
+                <div class="card">
+                    <h2 id="stepTitle">Escolha o Tamanho</h2>
+                    <p id="stepDescription">Selecione o tamanho da sua pizza</p>
+
+                   
+                    <div id="step1" class="step-content">
+                        <div class="size-grid">
+                            <label class="size-option">
+                                <input type="radio" name="size" value="broto" onchange="selectSize(event, 'broto')">
+                                <div class="size-card">
+                                    <span class="size-emoji">🍕</span>
+                                    <h3>Broto</h3>
+                                    <p>4 fatias</p>
+                                </div>
+                            </label>
+
+                            <label class="size-option">
+                                <input type="radio" name="size" value="media" onchange="selectSize(event, 'media')" checked>
+                                <div class="size-card selected">
+                                    <span class="size-emoji">🍕</span>
+                                    <h3>Média</h3>
+                                    <p>6 fatias</p>
+                                </div>
+                            </label>
+
+                            <label class="size-option">
+                                <input type="radio" name="size" value="grande" onchange="selectSize(event, 'grande')">
+                                <div class="size-card">
+                                    <span class="size-emoji">🍕</span>
+                                    <h3>Grande</h3>
+                                    <p>8 fatias</p>
+                                </div>
+                            </label>
+
+                            <label class="size-option">
+                                <input type="radio" name="size" value="familia" onchange="selectSize(event, 'familia')">
+                                <div class="size-card">
+                                    <span class="size-emoji">🍕</span>
+                                    <h3>Família</h3>
+                                    <p>12 fatias</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                 
+                    <div id="step2" class="step-content hidden">
+                        <div class="crust-grid">
+                            <label class="crust-option">
+                                <input type="radio" name="crust" value="normal" onchange="selectCrust(event, 'normal')" checked>
+                                <div class="crust-card selected">
+                                    <span class="crust-emoji">🍞</span>
+                                    <h3>Massa Normal</h3>
+                                    <p>Tradicional</p>
+                                </div>
+                            </label>
+
+                            <label class="crust-option">
+                                <input type="radio" name="crust" value="recheada" onchange="selectCrust(event, 'recheada')">
+                                <div class="crust-card">
+                                    <span class="crust-emoji">🧀</span>
+                                    <h3>Borda Recheada</h3>
+                                    <p>+ R$ 8,00</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    
+                    <div id="step3" class="step-content hidden">
+                        <div class="half-half-option">
+                            <label>
+                                <input type="checkbox" id="halfHalf" onchange="toggleHalfHalf()">
+                                Pizza metade/metade (2 sabores)
+                            </label>
+                        </div>
+
+                        <div id="selectedFlavors" class="selected-flavors hidden">
+                            <p><strong>Sabores selecionados:</strong></p>
+                            <div id="flavorBadges" class="flavor-badges"></div>
+                        </div>
+
+                        <div class="flavors-grid" id="flavorsGrid">
+                            
+                        </div>
+                    </div>
+
+                    
+                    <div id="step4" class="step-content hidden">
+                        <div class="extras-grid">
+                            <label class="extra-option">
+                                <input type="checkbox" value="Azeitona Extra" onchange="toggleExtra(this)">
+                                <div class="extra-card">
+                                    <span>Azeitona Extra</span>
+                                    <span class="extra-price">+ R$ 3,00</span>
+                                </div>
+                            </label>
+
+                            <label class="extra-option">
+                                <input type="checkbox" value="Queijo Extra" onchange="toggleExtra(this)">
+                                <div class="extra-card">
+                                    <span>Queijo Extra</span>
+                                    <span class="extra-price">+ R$ 3,00</span>
+                                </div>
+                            </label>
+
+                            <label class="extra-option">
+                                <input type="checkbox" value="Bacon" onchange="toggleExtra(this)">
+                                <div class="extra-card">
+                                    <span>Bacon</span>
+                                    <span class="extra-price">+ R$ 3,00</span>
+                                </div>
+                            </label>
+
+                            <label class="extra-option">
+                                <input type="checkbox" value="Cebola" onchange="toggleExtra(this)">
+                                <div class="extra-card">
+                                    <span>Cebola</span>
+                                    <span class="extra-price">+ R$ 3,00</span>
+                                </div>
+                            </label>
+
+                            <label class="extra-option">
+                                <input type="checkbox" value="Pimentão" onchange="toggleExtra(this)">
+                                <div class="extra-card">
+                                    <span>Pimentão</span>
+                                    <span class="extra-price">+ R$ 3,00</span>
+                                </div>
+                            </label>
+
+                            <label class="extra-option">
+                                <input type="checkbox" value="Champignon" onchange="toggleExtra(this)">
+                                <div class="extra-card">
+                                    <span>Champignon</span>
+                                    <span class="extra-price">+ R$ 3,00</span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="notes-section">
+                            <label for="notes">Observações (opcional)</label>
+                            <textarea id="notes" rows="3" placeholder="Ex: Sem cebola, massa bem assada..."></textarea>
+                        </div>
+                    </div>
+
+                    
+                    <div id="step5" class="step-content hidden">
+                        <div class="drinks-grid" id="drinksGrid">
+                       
+                        </div>
+
+                        <div id="selectedDrinks" class="selected-drinks hidden">
+                            <p><strong>Bebidas adicionadas:</strong></p>
+                            <div id="drinksList"></div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="nav-buttons">
+                        <button class="btn-secondary" onclick="previousStep()" id="prevBtn" disabled>
+                            ← Voltar
+                        </button>
+                        <button class="btn-primary" onclick="nextStep()" id="nextBtn">
+                            Próximo →
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="sidebar">
+                <div class="card">
+                    <h3>🛒 Resumo</h3>
+                    <div id="summary" class="summary-content">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status do Pedido - Domino's Pizza</title>
+    <link rel="stylesheet" href="status.css">
+</head>
+<body>
+    <div class="status-container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Status do Pedido</h1>
+            <button class="logout-btn" onclick="logout()">Sair</button>
+        </header>
+
+        <div class="content-wrapper">
+            <!-- Sucesso -->
+            <div class="success-card">
+                <div class="success-icon">✓</div>
+                <h2>Pedido Confirmado!</h2>
+                <p>Seu pedido foi recebido com sucesso</p>
+                <div class="order-id">Pedido #<span id="orderId"></span></div>
+            </div>
+
+            <!-- Status do Pedido -->
+            <div class="card">
+                <h3>Acompanhe seu Pedido</h3>
+                <div class="status-timeline">
+                    <div class="status-item active">
+                        <div class="status-dot"></div>
+                        <div class="status-content">
+                            <strong>Pedido Recebido</strong>
+                            <span>Seu pedido foi confirmado</span>
+                        </div>
+                    </div>
+
+                    <div class="status-item" id="status2">
+                        <div class="status-dot"></div>
+                        <div class="status-content">
+                            <strong>Enviado para Cozinha</strong>
+                            <span>Seu pedido está sendo preparado</span>
+                        </div>
+                    </div>
+
+                    <div class="status-item" id="status3">
+                        <div class="status-dot"></div>
+                        <div class="status-content">
+                            <strong>Em Preparo</strong>
+                            <span>Nossa equipe está preparando sua pizza</span>
+                        </div>
+                    </div>
+
+                    <div class="status-item" id="status4">
+                        <div class="status-dot"></div>
+                        <div class="status-content">
+                            <strong>Pronto</strong>
+                            <span>Seu pedido está pronto!</span>
+                        </div>
+                    </div>
+
+                    <div class="status-item" id="status5">
+                        <div class="status-dot"></div>
+                        <div class="status-content">
+                            <strong>Concluído</strong>
+                            <span>Pedido entregue</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="estimated-time">
+                    <strong>Tempo estimado:</strong>
+                    <span id="estimatedTime">25 minutos</span>
+                </div>
+            </div>
+
+            <!-- Detalhes do Pedido -->
+            <div class="card">
+                <h3>Detalhes do Pedido</h3>
+                <div id="orderDetails" class="order-details">
+                    <!-- Preenchido via JavaScript -->
+                </div>
+            </div>
+
+            <!-- Ações -->
+            <div class="actions">
+                <button class="btn-secondary" onclick="goHome()">Voltar ao Início</button>
+                <button class="btn-primary" onclick="newOrder()">Fazer Novo Pedido</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="status.js"></script>
+</body>
+</html>

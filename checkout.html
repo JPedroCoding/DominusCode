@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Pedido - Domino's Pizza</title>
+    <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+    <div class="checkout-container">
+      
+        <header class="header">
+            <h1>Finalizar Pedido</h1>
+            <button class="logout-btn" onclick="logout()">Sair</button>
+        </header>
+
+        <div class="content-wrapper">
+            <button class="back-btn" onclick="goBack()">← Voltar ao Menu</button>
+
+            <div class="checkout-grid">
+              
+                <div class="order-summary">
+                    <div class="card">
+                        <h2>Resumo do Pedido</h2>
+                        <p class="subtitle">Confira os detalhes</p>
+                        <div id="orderDetails" class="order-details">
+                            
+                        </div>
+                    </div>
+                </div>
+
+              
+                <div class="payment-section">
+                   
+                    <div class="card">
+                        <h3>Informações da Mesa</h3>
+                        <p class="subtitle">Informe o nome e número da sua mesa</p>
+                        
+                        <div class="form-group">
+                            <label for="tableName">Nome da Mesa *</label>
+                            <input type="text" id="tableName" placeholder="Ex: João Silva" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tableNumber">Número da Mesa *</label>
+                            <input type="number" id="tableNumber" placeholder="Ex: 5" min="1" max="20" required>
+                        </div>
+                    </div>
+
+               
+                    <div class="card">
+                        <h3>Forma de Pagamento</h3>
+                        <p class="subtitle">Escolha como deseja pagar</p>
+
+                        <div class="payment-methods">
+                            <label class="payment-option selected">
+                                <input type="radio" name="payment" value="pix" checked onchange="selectPayment('pix')">
+                                <div class="payment-card">
+                                    <div class="payment-icon">📱</div>
+                                    <div class="payment-info">
+                                        <strong>PIX</strong>
+                                        <span>Pagamento instantâneo</span>
+                                    </div>
+                                    <div class="check-icon">✓</div>
+                                </div>
+                            </label>
+
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="card" onchange="selectPayment('card')">
+                                <div class="payment-card">
+                                    <div class="payment-icon">💳</div>
+                                    <div class="payment-info">
+                                        <strong>Cartão</strong>
+                                        <span>Débito ou crédito</span>
+                                    </div>
+                                    <div class="check-icon">✓</div>
+                                </div>
+                            </label>
+
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="cash" onchange="selectPayment('cash')">
+                                <div class="payment-card">
+                                    <div class="payment-icon">💵</div>
+                                    <div class="payment-info">
+                                        <strong>Dinheiro</strong>
+                                        <span>Pagar na entrega</span>
+                                    </div>
+                                    <div class="check-icon">✓</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+           
+                    <button class="confirm-btn" id="confirmBtn" onclick="confirmOrder()" disabled>
+                        ✓ Confirmar Pedido
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
+    <div id="loadingModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="spinner"></div>
+            <p>Processando seu pedido...</p>
+        </div>
+    </div>
+
+    <script src="checkout.js"></script>
+</body>
+</html>

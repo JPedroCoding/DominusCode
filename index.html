@@ -3,39 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Domino's</title>
-    <link rel="stylesheet" href="style.css"> 
+    <title>Domino's Pizza - Login</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main>
-
-            <a href=""> <img src="./imgs/image-removebg-preview.png" alt="Logo"></a>
-
-        <div id="cards">
-            <div id="cliente">
-                <img src="#" alt="íconeCliente">
-                <h2>Client</h2>
-                <p>Fazer pedidos e acompanhar status</p>
-                <a href="./loginCliente.html"> Selecionar -></a>
-                
+    <div class="login-container">
+        <div class="login-wrapper">
+            <!-- Logo Header -->
+            <div class="logo-header">
+                <div class="logo-badge">
+                    <div class="logo-icon">🍕</div>
+                    <h1>Domino's Pizza</h1>
+                </div>
+                <p class="subtitle">Sistema de Comanda Digital</p>
             </div>
 
-            <div id="garçom">
-                <img src="#" alt="íconeGarçom">
-                <h2 class="h2-garçom">Garçom</h2>
-                <p>Gerenciar mesas e pedidos</p>
-                <a href="./loginGarçom.html"> Selecionar -></a>
+            <!-- Role Selection -->
+            <div id="roleSelection" class="role-grid">
+                <div class="role-card" onclick="selectRole('customer')">
+                    <div class="role-icon-bg customer-bg">
+                        <span class="role-icon">👤</span>
+                    </div>
+                    <h2>Cliente</h2>
+                    <p>Fazer pedidos e acompanhar status</p>
+                    <button class="role-btn">Selecionar →</button>
+                </div>
 
+                <div class="role-card" onclick="selectRole('waiter')">
+                    <div class="role-icon-bg waiter-bg">
+                        <span class="role-icon">🍴</span>
+                    </div>
+                    <h2>Garçom</h2>
+                    <p>Gerenciar mesas e pedidos</p>
+                    <button class="role-btn">Selecionar →</button>
+                </div>
+
+                <div class="role-card" onclick="selectRole('kitchen')">
+                    <div class="role-icon-bg kitchen-bg">
+                        <span class="role-icon">👨‍🍳</span>
+                    </div>
+                    <h2>Cozinha</h2>
+                    <p>Preparar e gerenciar pedidos</p>
+                    <button class="role-btn">Selecionar →</button>
+                </div>
             </div>
-            <div id="cozinha">
-                <img src="#" alt="íconeCozinha">
-                <h2>Cozinha</h2>
-                <p>Preparar e gerenciar pedidos</p>
-                <a href="./loginCozinha.html"> Selecionar -></a>
 
+            <!-- Login Form (hidden initially) -->
+            <div id="loginForm" class="login-form hidden">
+                <div class="form-card">
+                    <button class="back-button" onclick="backToRoleSelection()">← Voltar</button>
+                    
+                    <div class="form-header">
+                        <div class="form-icon" id="formIcon"></div>
+                        <h2 id="formTitle">Login</h2>
+                        <p>Entre com suas credenciais para acessar o sistema</p>
+                    </div>
+
+                    <form onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                placeholder="seu@email.com" 
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Senha</label>
+                            <input 
+                                type="password" 
+                                id="password" 
+                                placeholder="••••••••" 
+                                required
+                            >
+                        </div>
+
+                        <a href="#" class="forgot-password">Esqueci minha senha</a>
+
+                        <button  type="submit" class="submit-btn">
+                            Entrar →
+                        </button>
+                    </form>
+
+                    <div class="demo-credentials">
+                        <p><strong>💡 Credenciais de demonstração:</strong></p>
+                        <p>Email: <code>demo@dominos.com</code></p>
+                        <p>Senha: <code>123456</code></p>
+                    </div>
+                </div>
             </div>
 
+            <!-- Loading Screen -->
+            <div id="loadingScreen" class="loading-screen hidden">
+                <div class="spinner"></div>
+                <p id="loadingMessage">Autenticando...</p>
+            </div>
         </div>
-    </main>
+    </div>
+
+    <script src="login.js"></script>
 </body>
 </html>
